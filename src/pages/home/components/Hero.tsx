@@ -12,12 +12,17 @@ import { useRef } from "react";
 import figma from "@icon/figma.svg";
 import github from "@icon/github.svg";
 import vsCode from "@icon/vsCode.svg";
-import heroImage from "@img/hero.png";
+import heroImage from "@img/hero-highlight.png";
+
+import heroProject1 from "@img/hero-project-1.png";
+import heroProject2 from "@img/hero-project-2.png";
+import heroProject3 from "@img/hero-project-3.png";
+import heroProject4 from "@img/hero-project-4.png";
 
 /**
  * Hero component.
  * Renders the hero section with a scrolling or draggable project slider based on screen size.
- * @returns {JSX.Element} - Rendered hero component.
+ * @returns {JSX.Element} Rendered hero component.
  */
 function Hero(): JSX.Element {
     const hero = useRef<HTMLDivElement>(null);
@@ -64,9 +69,9 @@ function Hero(): JSX.Element {
                     scrollSlider();
                 } else {
                     gsap.set(".hero__scroll-wrapper", { x: "5%" });
-                    gsap.set(window, {
-                        scrollTo: { y: 0, autoKill: true },
-                    });
+                    // gsap.set(window, {
+                    //     scrollTo: { y: 0, autoKill: true },
+                    // });
                     touchSlider();
                 }
             }
@@ -84,7 +89,7 @@ function Hero(): JSX.Element {
     );
 
     return (
-        <main className="hero" ref={hero}>
+        <main className="hero" ref={hero} id="hero">
             <div className="Container hero__container">
                 <h1 className="hero__title">
                     Lorem
@@ -113,10 +118,18 @@ function Hero(): JSX.Element {
                     dolor ipsum
                 </p>
                 <div className="hero__scroll-wrapper">
-                    <div className="hero__project"></div>
-                    <div className="hero__project"></div>
-                    <div className="hero__project"></div>
-                    <div className="hero__project"></div>
+                    <div className="hero__project">
+                        <img src={heroProject1} alt="" />
+                    </div>
+                    <div className="hero__project">
+                        <img src={heroProject2} alt="" />
+                    </div>
+                    <div className="hero__project">
+                        <img src={heroProject3} alt="" />
+                    </div>
+                    <div className="hero__project">
+                        <img src={heroProject4} alt="" />
+                    </div>
                 </div>
             </div>
         </main>
@@ -124,3 +137,5 @@ function Hero(): JSX.Element {
 }
 
 export default Hero;
+
+// TODO: fix the scroll when resizing the window

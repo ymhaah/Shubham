@@ -12,6 +12,12 @@ gsap.registerPlugin(useGSAP);
  * @returns {JSX.Element} - Rendered header component.
  */
 function Header(): JSX.Element {
+    const navLinks = [
+        { name: "Home", href: "#hero" },
+        { name: "About", href: "#about" },
+        { name: "Service", href: "#service" },
+    ];
+
     const header = useRef<HTMLDivElement>(null);
     const nav = useRef<HTMLDivElement>(null);
 
@@ -95,7 +101,7 @@ function Header(): JSX.Element {
         <header className="header" ref={header}>
             <div className="Container header__container">
                 <div className="header__logo-wrapper">
-                    <a href="#" className="header__logo-link focus">
+                    <a href="/index.html" className="main-logo focus">
                         Shubham
                     </a>
                 </div>
@@ -157,36 +163,24 @@ function Header(): JSX.Element {
                             id="main-navigation-list"
                             className="header__nav-list"
                         >
-                            <li className="header__nav-item">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    className="header__nav-link focus"
-                                >
-                                    Home
-                                </a>
-                            </li>
-                            <li className="header__nav-item">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    className="header__nav-link focus"
-                                >
-                                    About
-                                </a>
-                            </li>
-                            <li className="header__nav-item">
-                                <a
-                                    href="#"
-                                    target="_blank"
-                                    className="header__nav-link focus"
-                                >
-                                    Blog
-                                </a>
-                            </li>
-
+                            {navLinks.map((link, index) => (
+                                <li key={index} className="header__nav-item">
+                                    <a
+                                        href={link.href}
+                                        className="header__nav-link focus"
+                                    >
+                                        {link.name}
+                                    </a>
+                                </li>
+                            ))}
                             <li className="header__nav-item header__nav-item--button">
-                                <Button className="btn-primary">Hire Me</Button>
+                                <Button
+                                    className="btn-primary"
+                                    as="a"
+                                    href="#input-name"
+                                >
+                                    Hire Me
+                                </Button>
                             </li>
                         </ul>
                     </nav>

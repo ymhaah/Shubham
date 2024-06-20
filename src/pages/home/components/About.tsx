@@ -1,31 +1,56 @@
-function About() {
-    // useGSAP(
-    //     (context, contextSafe) => {
-    //         const projects = gsap.utils.toArray("hero__project");
+import star from "@icon/star.svg";
 
-    //         console.log(projects);
+/**
+ * The About component renders a section with information about the user,
+ * including a list of skills displayed in a scrolling wrapper.
+ *
+ * @returns {JSX.Element} Rendered about section component.
+ */
+function About(): JSX.Element {
+    const skills = [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next",
+        "React Native",
+        "Node.js",
+        "Express",
+    ];
 
-    //         // gsap.to(".hero__scroll-wrapper", {
+    // ? Create a repeated skills array for the scrolling effect
+    const repeatedSkills = [...skills, ...skills];
 
-    //         // })
-
-    //         // const c = contextSafe(() => {
-    //         // 	gsap.to("", {
-
-    //         // 	})
-    //         // })
-
-    //         // hero.current?.addEventListener("click", c)
-
-    //         // console.log(context)
-    //         // return () => {
-    //         // 	hero.current?.removeEventListener("click", c)
-    //         // }
-    //     },
-    //     { scope: hero, dependencies: [] }
-    // );
-
-    return <div className="about"></div>;
+    return (
+        <section className="about" aria-labelledby="about">
+            <div className="Container">
+                <p>About Me</p>
+                <h2 id="about">Lorem ipsum dolor sit amet consectetur</h2>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptates
+                    <br /> laborum aliquid fuga odit ut iure doloremque eos rem.
+                </p>
+            </div>
+            <div className="scroll-wrapper">
+                <ul>
+                    {repeatedSkills.map((skill, index) => (
+                        <li
+                            key={index}
+                            aria-hidden={
+                                index >= skills.length ? "true" : undefined
+                            }
+                            className="p"
+                        >
+                            <img src={star} alt="" role="presentation" />
+                            {skill}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+    );
 }
 
 export default About;

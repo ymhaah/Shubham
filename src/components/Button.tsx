@@ -32,7 +32,11 @@ function Button<E extends React.ElementType = "button">({
 
     return (
         <Component
-            type={Component === "button" ? "button" : undefined}
+            type={
+                Component === "button"
+                    ? nativeAttributes.type || "button"
+                    : undefined
+            }
             aria-label={iconOnlyAlt}
             aria-disabled={isDisabled}
             disabled={Component === "button" ? isDisabled : undefined}
