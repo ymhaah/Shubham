@@ -1,3 +1,5 @@
+import SocialLinks from "@/SocialLinks";
+
 import star from "@icon/star.svg";
 
 /**
@@ -20,7 +22,7 @@ function About(): JSX.Element {
     ];
 
     // ? Create a repeated skills array for the scrolling effect
-    const repeatedSkills = [...skills, ...skills];
+    const repeatedSkills = [...skills, ...skills, ...skills, ...skills];
 
     return (
         <section className="about" aria-labelledby="about">
@@ -32,6 +34,7 @@ function About(): JSX.Element {
                     Voluptates
                     <br /> laborum aliquid fuga odit ut iure doloremque eos rem.
                 </p>
+                <SocialLinks />
             </div>
             <div className="scroll-wrapper">
                 <ul>
@@ -54,3 +57,5 @@ function About(): JSX.Element {
 }
 
 export default About;
+
+// TODO: add social links

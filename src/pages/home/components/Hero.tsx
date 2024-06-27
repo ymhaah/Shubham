@@ -1,13 +1,13 @@
+import { useRef } from "react";
+
+import Button from "@/Button";
+
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
-gsap.registerPlugin(useGSAP, ScrollTrigger, Draggable, ScrollToPlugin);
-
-import { useRef } from "react";
 
 import figma from "@icon/figma.svg";
 import github from "@icon/github.svg";
@@ -19,12 +19,62 @@ import heroProject2 from "@img/hero-project-2.png";
 import heroProject3 from "@img/hero-project-3.png";
 import heroProject4 from "@img/hero-project-4.png";
 
+import eye from "@icon/eye.svg";
+import code from "@icon/code.svg";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, Draggable, ScrollToPlugin);
+
 /**
  * Hero component.
  * Renders the hero section with a scrolling or draggable project slider based on screen size.
  * @returns {JSX.Element} Rendered hero component.
  */
 function Hero(): JSX.Element {
+    const highlights = [
+        {
+            img: figma,
+            alt: "figma",
+        },
+        {
+            img: github,
+            alt: "github",
+        },
+        {
+            img: vsCode,
+            alt: "vsCode",
+        },
+    ];
+
+    // ? don't path github link if you doesn't want to share it
+    const projectsInfo = [
+        {
+            img: heroProject1,
+            title: "antigranular",
+            description: "Lorem ipsum dolor sit amet...",
+            siteLink: "https://www.antigranular.com/",
+            githubLink: "#",
+        },
+        {
+            img: heroProject2,
+            title: "oblivious",
+            description: "Lorem ipsum dolor sit amet...",
+            siteLink: "https://www.oblivious.com/",
+            githubLink: "#",
+        },
+        {
+            img: heroProject3,
+            title: "lilman",
+            description: "Lorem ipsum dolor sit amet...",
+            siteLink: "https://lilman.netlify.app/",
+        },
+        {
+            img: heroProject4,
+            title: "Club Mobay",
+            description: "Lorem ipsum dolor sit amet...",
+            siteLink: "https://obi.reliablesoftjm.com/",
+        },
+    ];
+
     const hero = useRef<HTMLDivElement>(null);
 
     useGSAP(
@@ -95,15 +145,16 @@ function Hero(): JSX.Element {
                     Lorem
                     <span className="avatar-group">
                         <ul>
-                            <li>
-                                <img src={figma} alt="figma" />
-                            </li>
-                            <li>
-                                <img src={github} alt="github" />
-                            </li>
-                            <li>
-                                <img src={vsCode} alt="vsCode" />
-                            </li>
+                            {highlights.map((highlight, index) => {
+                                return (
+                                    <li key={index}>
+                                        <img
+                                            src={highlight.img}
+                                            alt={highlight.alt}
+                                        />
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </span>
                     ipsum dolor <br />
@@ -117,19 +168,62 @@ function Hero(): JSX.Element {
                     Lorem ipsum dolor sit amet Lorem ipsum dolor <br /> sit amet
                     dolor ipsum
                 </p>
+                <Button
+                    as="a"
+                    href="https://drive.google.com/file/d/1rsGPL75yhGMyKY-z3UtLV-wSw5dRMM__/view"
+                    className="btn-mono"
+                    target="_blank"
+                >
+                    Resume/CV
+                </Button>
                 <div className="hero__scroll-wrapper">
-                    <div className="hero__project">
-                        <img src={heroProject1} alt="" />
-                    </div>
-                    <div className="hero__project">
-                        <img src={heroProject2} alt="" />
-                    </div>
-                    <div className="hero__project">
-                        <img src={heroProject3} alt="" />
-                    </div>
-                    <div className="hero__project">
-                        <img src={heroProject4} alt="" />
-                    </div>
+                    {projectsInfo.map((project, index) => {
+                        return (
+                            <div className="hero__project" key={index}>
+                                <img
+                                    src={project.img}
+                                    alt=""
+                                    className="project__image"
+                                />
+                                <div className="overlay">
+                                    <h2>{project.title}</h2>
+                                    <p>{project.description}</p>
+                                    <div className="overlay__links">
+                                        <a
+                                            href={project.siteLink}
+                                            className="focus"
+                                            target="_blank"
+                                            title="site link"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <img
+                                                src={eye}
+                                                alt=""
+                                                role="presentation"
+                                            />
+                                            <span className="visually-hidden">
+                                                site link
+                                            </span>
+                                        </a>
+                                        {project.githubLink && (
+                                            <a
+                                                href={project.githubLink}
+                                                className="focus"
+                                                target="_blank"
+                                                title="github link"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <img src={code} alt="github" />
+                                                <span className="visually-hidden">
+                                                    github link
+                                                </span>
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </main>

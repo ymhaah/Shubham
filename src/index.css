@@ -117,7 +117,7 @@ a {
   --Header-hight: 5rem;
   --radius: 0.5em;
   --shadow: 0 6px 30px rgba(0, 0, 0, 10%);
-  --margin: min(14em, 14vh);
+  --margin: min(12em, 12vh);
   --gap: 1rem;
   --icon-size: 1rem;
   --icon-clr: var(--txt-clr);
@@ -426,6 +426,12 @@ svg,
 .hero__title {
   opacity: 0.9;
 }
+.hero__subtitle {
+  margin-bottom: calc(var(--gap) * 1.5);
+}
+.hero .button {
+  border-radius: 30px;
+}
 .hero__highlight img {
   width: 1.5em;
   position: relative;
@@ -445,10 +451,61 @@ svg,
   border-radius: calc(var(--radius) * 2);
   overflow: hidden;
   box-shadow: var(--shadow);
+  position: relative;
 }
-.hero__project img {
+.hero__project .project__image {
   width: 100%;
   height: 100%;
+}
+.hero__project .overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--gap) / 2);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  isolation: isolate;
+  z-index: 2;
+  overflow: hidden;
+  padding: 5%;
+  opacity: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  text-transform: capitalize;
+  transition: opacity calc(var(--time-fast) * 2) var(--animation);
+}
+.hero__project .overlay h2 {
+  font-size: var(--fs-l);
+  color: var(--bg-clr);
+}
+.hero__project .overlay p {
+  font-size: var(--fs-s);
+  color: var(--bg-clr);
+}
+.hero__project .overlay .overlay__links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--gap);
+  gap: var(--gap);
+}
+.hero__project .overlay .overlay__links img {
+  min-width: 1.5rem;
+  padding: calc(var(--gap) / 2);
+  border: 1.5px solid var(--bg-clr);
+  border-radius: 50%;
+}
+.hero__project:hover .overlay, .hero__project .overlay:has(a:focus-visible), .hero__project:focus-visible .overlay {
+  opacity: 1;
+}
+.hero__project:hover .project__image {
+  filter: blur(1px);
 }
 
 .about {
@@ -463,6 +520,7 @@ svg,
   margin-block: var(--margin);
 }
 .about .Container {
+  position: relative;
   padding-top: var(--margin);
 }
 .about .Container h2 {
@@ -471,6 +529,23 @@ svg,
 .about .Container p {
   color: var(--bg-clr);
   opacity: 0.5;
+  margin-bottom: var(--gap);
+}
+.about .Container .social-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--gap);
+  position: relative;
+}
+.about .Container .social-links li {
+  transition: transform var(--time-fast) var(--animation);
+}
+.about .Container .social-links li a img {
+  width: 2rem;
+  filter: invert(100%);
+  opacity: 0.6;
 }
 .about .scroll-wrapper {
   position: absolute;
@@ -479,20 +554,21 @@ svg,
   max-width: 100%;
   transform: rotate(-3deg);
   box-shadow: var(--shadow);
+  background-color: var(--primary-clr-600);
 }
 .about .scroll-wrapper ul {
+  background-color: var(--primary-clr-600);
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  background-color: var(--primary-clr-600);
   flex-wrap: nowrap;
   padding-block: calc(var(--gap) * 1.5);
   gap: calc(var(--gap) * 4);
   transform-origin: center;
-  animation: infintiteScrool 20s linear infinite;
+  animation: infintiteScrool 50s linear infinite;
 }
 .about .scroll-wrapper ul li {
   display: flex;
@@ -507,9 +583,6 @@ svg,
 }
 .about .scroll-wrapper ul li img {
   height: 1em;
-}
-.about .scroll-wrapper ul:hover {
-  animation-play-state: paused;
 }
 
 @keyframes infintiteScrool {
@@ -580,6 +653,7 @@ section[aria-labelledby=contact] .Container .form form button {
 
 .form-input {
   max-width: 100%;
+  min-width: 50%;
   min-height: 2.5em;
   border: 0.1em solid var(--mono-clr);
   border-radius: var(--radius);
@@ -671,9 +745,9 @@ footer .Container nav[aria-label="social media links"] ul {
 footer .Container nav[aria-label="social media links"] ul li {
   transition: transform var(--time-fast) var(--animation);
 }
-footer .Container nav[aria-label="social media links"] ul li a svg {
-  --icon-size: 2rem;
-  --icon-clr: var(--mono-clr);
+footer .Container nav[aria-label="social media links"] ul li a img {
+  width: 2rem;
+  opacity: 0.8;
   box-shadow: var(--shadow);
 }
 footer .Container > * {
@@ -763,6 +837,13 @@ footer .Container > * {
     transform: translateX(5%);
     gap: 0.5em;
   }
+  .hero__project .overlay h2,
+  .hero__project .overlay p {
+    display: none;
+  }
+  .hero__project .overlay .overlay__links img {
+    min-width: 2rem;
+  }
   section[aria-labelledby=contact] .Container {
     --container-width: calc(100% - 2rem);
     display: flex;
@@ -819,7 +900,7 @@ footer .Container > * {
   .avatar-group ul li:hover {
     transform: translateY(-15%);
   }
-  footer nav[aria-label="social media links"] li:hover {
+  .social-links li:hover {
     transform: rotate(10deg) scale(1.1);
   }
 }

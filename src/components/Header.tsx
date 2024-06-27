@@ -9,7 +9,7 @@ gsap.registerPlugin(useGSAP);
 /**
  * Header component.
  * Renders the header with navigation and logo.
- * @returns {JSX.Element} - Rendered header component.
+ * @returns {JSX.Element} Rendered header component.
  */
 function Header(): JSX.Element {
     const navLinks = [
@@ -37,11 +37,11 @@ function Header(): JSX.Element {
                     // ? Scrolling Down
                     gsap.to(header.current, {
                         y: -header.current.offsetHeight,
-                        duration: 0.5,
+                        duration: 0.25,
                     });
                 } else {
                     // ? Scrolling Up
-                    gsap.to(header.current, { y: 0, duration: 0.5 });
+                    gsap.to(header.current, { y: 0, duration: 0.25 });
                 }
 
                 lastScrollY = currentScrollY;
