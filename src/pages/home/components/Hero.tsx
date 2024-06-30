@@ -15,6 +15,8 @@ import vsCode from "@icon/vsCode.svg";
 import heroImage from "@img/hero-highlight.png";
 
 import heroProject1 from "@img/hero-project-1.png";
+import AvatarGroup from "@/AvatarGroup";
+
 import heroProject2 from "@img/hero-project-2.png";
 import heroProject3 from "@img/hero-project-3.png";
 import heroProject4 from "@img/hero-project-4.png";
@@ -115,10 +117,10 @@ function Hero(): JSX.Element {
                 Draggable.get(".hero__scroll-wrapper")?.kill();
                 ScrollTrigger.getAll()?.forEach((trigger) => trigger.kill());
                 if (window.innerWidth >= 768) {
-                    gsap.set(".hero__scroll-wrapper", { x: "20%" });
+                    // gsap.set(".hero__scroll-wrapper", { x: "20%" });
                     scrollSlider();
                 } else {
-                    gsap.set(".hero__scroll-wrapper", { x: "5%" });
+                    // gsap.set(".hero__scroll-wrapper", { x: "5%" });
                     // gsap.set(window, {
                     //     scrollTo: { y: 0, autoKill: true },
                     // });
@@ -143,20 +145,7 @@ function Hero(): JSX.Element {
             <div className="Container hero__container">
                 <h1 className="hero__title">
                     Lorem
-                    <span className="avatar-group">
-                        <ul>
-                            {highlights.map((highlight, index) => {
-                                return (
-                                    <li key={index}>
-                                        <img
-                                            src={highlight.img}
-                                            alt={highlight.alt}
-                                        />
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </span>
+                    <AvatarGroup avatars={highlights} />
                     ipsum dolor <br />
                     sorem, ipsum
                     <span className="hero__highlight">
