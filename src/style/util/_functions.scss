@@ -1,0 +1,14 @@
+@function strip-unit($number) {
+    @if type-of($number) == "number" and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+    @return $number;
+}
+
+@function toRem($number) {
+    @return calc(strip-unit(calc($number / 16)) * 1rem);
+}
+
+@function toEm($number) {
+    @return calc(strip-unit(calc($number / 16)) * 1em);
+}

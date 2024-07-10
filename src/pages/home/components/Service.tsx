@@ -2,7 +2,13 @@ import link from "@img/link.png";
 import globe from "@img/table-globe.jpg";
 import target from "@img/target.png";
 
-function Service() {
+/**
+ * The Service component renders a section with all of the services we offer.
+ * including a cards of each service.
+ *
+ * @returns {JSX.Element} Rendered Service section component.
+ */
+function Service(): JSX.Element {
     const services = [
         {
             icon: link,

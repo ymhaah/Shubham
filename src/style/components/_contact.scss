@@ -1,0 +1,94 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+
+// @include flex(r, c, c);
+// @include flexForPhon(cr,2);
+// @include grid(2, 2, fr, 1rem)
+
+section[aria-labelledby="contact"] {
+    width: 100%;
+    .Container {
+        --container-width: 100%;
+        @include flex(cr, sb, c);
+        gap: var(--gap);
+        h2 {
+            line-height: 1;
+        }
+        .col-1 {
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+        }
+        .form {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            form {
+                width: 20%;
+                @include flex(c, c, fs);
+                gap: 0.8em;
+                font-size: var(--fs-s);
+                text-align: left;
+                .input-wrapper {
+                    width: 100%;
+                    position: relative;
+                    @include flex(c, sb, fs);
+                    gap: 0.2em;
+                    margin-block-start: 0.6em;
+                }
+                p {
+                    margin-inline: 0.5em;
+                }
+                p.waiting {
+                    color: var(--txt-clr);
+                }
+                p.error {
+                    color: var(--error-clr);
+                }
+                p.success {
+                    color: var(--success-clr);
+                }
+                button {
+                    margin-top: calc(var(--gap) / 2);
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+.form-input {
+    max-width: 100%;
+    min-width: 50%;
+    min-height: 2.5em;
+    border: 0.1em solid var(--mono-clr);
+    border-radius: var(--radius);
+    padding: 0.35em 0.55em;
+    width: 100%;
+    background-color: var(--bg-clr);
+    caret-color: var(--primary-clr-600);
+}
+.form-label {
+    color: var(--txt-clr);
+    position: relative;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    letter-spacing: 0.05em;
+    margin-inline: 0.45em;
+    padding: 0.1em 0.35em;
+}
+.form-label.required::after {
+    content: "*";
+    position: absolute;
+    top: -10%;
+    right: -3px;
+    font-size: 1em;
+    color: var(--error-clr);
+    user-select: none;
+}
+.form-input::placeholder {
+    user-select: none;
+}
+.form-input::selection {
+    background: var(--primary-clr-600);
+    color: var(--txt-clr);
+}

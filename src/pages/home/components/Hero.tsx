@@ -117,13 +117,13 @@ function Hero(): JSX.Element {
                 Draggable.get(".hero__scroll-wrapper")?.kill();
                 ScrollTrigger.getAll()?.forEach((trigger) => trigger.kill());
                 if (window.innerWidth >= 768) {
-                    // gsap.set(".hero__scroll-wrapper", { x: "20%" });
+                    gsap.set(".hero__scroll-wrapper", { x: "20%" });
                     scrollSlider();
                 } else {
-                    // gsap.set(".hero__scroll-wrapper", { x: "5%" });
-                    // gsap.set(window, {
-                    //     scrollTo: { y: 0, autoKill: true },
-                    // });
+                    gsap.set(".hero__scroll-wrapper", { x: "5%" });
+                    gsap.set(window, {
+                        scrollTo: { y: 0, autoKill: true },
+                    });
                     touchSlider();
                 }
             }

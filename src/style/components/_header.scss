@@ -1,0 +1,43 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+
+// @include flex(r, c, c);
+// @include flexForPhon(cr,2);
+// @include grid(2, 2, fr, 1rem)
+
+.main-logo {
+    display: block;
+    color: var(--txt-clr);
+    font-size: var(--fs-l);
+    font-weight: var(--fw-b);
+    line-height: 1;
+    white-space: nowrap;
+}
+.header {
+    height: var(--Header-hight);
+    width: 100%;
+    padding: 0.1rem 0;
+    background-color: var(--bg-clr);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    isolation: isolate;
+    &__container {
+        @include flex(r, sb, c);
+        gap: 1rem;
+    }
+    &__toggle-button {
+        display: none;
+    }
+    &__nav-list {
+        @include flex(r, fe, c);
+        gap: calc(var(--gap) * 1.5);
+    }
+    &__nav-link {
+        white-space: nowrap;
+        color: var(--txt-clr);
+        font-size: var(--fs-s);
+        font-weight: var(--fw-l);
+    }
+}

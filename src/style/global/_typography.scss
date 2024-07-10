@@ -1,0 +1,98 @@
+@use "./colors.scss" as *;
+@use "../util/index" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    // font families
+    --ff-serif: "Inter", sans-serif;
+
+    // font sizes
+    --fs-s: #{toRem(14px)}; /* 14px */
+    --fs-m: #{toRem(16px)}; /* 16px */
+    --fs-l: #{toRem(20px)}; /* 24px */
+    --fs-xl: #{toRem(35px)}; /* 60px */
+    --fs-xxl: #{toRem(80px)}; /* 80px */
+    --fs-3xl: clamp(2.5rem, 7vw, 7rem);
+
+    //Weights
+    --fw-l: 400;
+    --fw-m: 500;
+    --fw-b: 700;
+}
+body {
+    font-family: var(--ff-serif);
+    font-optical-sizing: auto;
+    font-style: normal;
+    line-height: 1.7;
+    color: var(--txt-clr);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+    margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+h1,
+.h1,
+h2,
+.h2 {
+    font-size: var(--fs-3xl);
+    font-weight: var(--fw-b);
+}
+h3,
+.h3 {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-m);
+}
+h4,
+.h4 {
+    font-size: var(--fs-l);
+    font-weight: var(--fw-m);
+}
+p,
+.p {
+    color: var(--txt-clr-300);
+    font-size: var(--fs-l);
+    font-weight: var(--fw-l);
+}
+.small {
+    font-size: var(--fs-m);
+    font-weight: var(--fw-l);
+}
+a {
+    font-size: var(--fs-s);
+    font-weight: var(--fw-l);
+    text-decoration: none;
+}
+.link {
+    text-decoration: underline !important;
+    color: var(--accent-clr) !important;
+}
+// .link:hover,
+// .link:focus {
+// }
+// @media print {
+//     :root {
+//         --fs-s: 12px; /* 1rem */
+//         --fs-m: 16px; /* 1.3rem */
+//         --fs-l: 22px; /* 1.7rem */
+//         --fs-xl: 30px; /* 2.3rem */
+//         --fs-xxl: 40px; /* 3.1rem */
+//         --fs-3xl: calc(24px + 4vw); /* Adjust as needed */
+//     }
+// }

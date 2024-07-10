@@ -1,0 +1,81 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+
+// @include flex(r, c, c);
+// @include flexForPhon(cr,2);
+// @include grid(2, 2, fr, 1rem)
+
+.about {
+    height: 100vh;
+    background-color: var(--txt-clr-500);
+    background-image: url("/bg-about.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--bg-clr);
+    position: relative;
+    margin-block: var(--margin);
+    .Container {
+        position: relative;
+        padding-top: var(--margin);
+        h2 {
+            margin-bottom: calc(var(--gap) * 4);
+        }
+        p {
+            color: var(--bg-clr);
+            opacity: 0.5;
+            margin-bottom: var(--gap);
+        }
+        .social-links {
+            @include flex(r, fs, c);
+            gap: var(--gap);
+            position: relative;
+            li {
+                transition: transform var(--time-fast) var(--animation);
+                a {
+                    img {
+                        width: 2rem;
+                        filter: invert(100%);
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+    }
+    .scroll-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: -2%;
+        max-width: 100%;
+        transform: rotate(-3deg);
+        box-shadow: var(--shadow);
+        background-color: var(--primary-clr-600);
+        ul {
+            background-color: var(--primary-clr-600);
+            width: fit-content;
+            @include flex(r, fs, c);
+            flex-wrap: nowrap;
+            padding-block: calc(var(--gap) * 1.5);
+            gap: calc(var(--gap) * 4);
+            transform-origin: center;
+            animation: infintiteScrool 50s linear infinite;
+            li {
+                @include flex(r, fs, c);
+                gap: var(--gap);
+                text-transform: capitalize;
+                text-wrap: nowrap;
+                font-size: var(--fs-xl);
+                color: var(--bg-clr);
+                img {
+                    height: 1em;
+                }
+            }
+        }
+    }
+}
+
+@keyframes infintiteScrool {
+    to {
+        transform: translateX(calc(-50% - calc(calc(var(--gap) * 4) / 2)));
+    }
+}

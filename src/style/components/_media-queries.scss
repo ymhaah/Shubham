@@ -1,0 +1,300 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+
+// @include flexQueries(r, c, c);
+// @include flexForPhon(cr,2);
+// @include grid(2, 2, fr, 1rem)
+
+@media screen and (max-width: #{toEm(2560px)}) {
+}
+@media screen and (min-width: #{toEm(2560px)}) {
+}
+// For 4K
+@media screen and (min-width: #{toEm(1600px)}) {
+    .Container {
+        --container-width: calc(1600px - 6rem);
+    }
+}
+@media screen and (max-width: #{toEm(1600px)}) {
+    .Container {
+        --container-width: 90%;
+    }
+}
+// For L Monitor
+
+@media screen and (max-width: #{toEm(1440px)}) {
+    // .Container {
+    // }
+}
+// For Monitor
+
+@media screen and (max-width: #{toEm(1024px)}) {
+    .Container {
+        --container-width: calc(100% - 4rem);
+    }
+}
+@media screen and (min-width: #{toEm(1025px)}) {
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+}
+
+// For laptop, S-Monitor
+@media screen and (max-width: #{toEm(768px)}) {
+    .Container {
+        --container-width: calc(100% - 2rem);
+    }
+    .header {
+        &__toggle-button {
+            display: inline-flex;
+        }
+        &__nav {
+            height: auto;
+            width: 100%;
+            display: block;
+            position: absolute;
+            isolation: isolate;
+            left: 0;
+            top: var(--Header-hight);
+            z-index: 101;
+            background-color: var(--bg-clr);
+            padding: calc(var(--Header-hight) / 2) 1rem;
+            box-shadow: var(--shadow);
+            transform: translateY(-125%);
+            &--opened {
+                display: block;
+                animation: slideIn var(--time-slow) var(--animation) forwards;
+            }
+            &--closing {
+                animation: slideOut var(--time-slow) var(--animation) forwards;
+            }
+            &--closed {
+                display: none;
+            }
+            @keyframes slideIn {
+                from {
+                    transform: translateY(-125%);
+                }
+                to {
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes slideOut {
+                from {
+                    transform: translateY(0);
+                }
+                to {
+                    transform: translateY(-125%);
+                }
+            }
+        }
+        &__nav-list {
+            @include flex(c, sb, c);
+            gap: 2rem;
+        }
+        &__nav-item--button {
+            width: 100%;
+        }
+    }
+    .hero {
+        &__subtitle {
+            width: 80%;
+            margin-inline: auto;
+        }
+        &__scroll-wrapper {
+            grid-template-columns: repeat(5, minmax(70vw, 1fr));
+            margin-top: var(--margin);
+            transform: translateX(5%);
+            gap: 0.5em;
+        }
+        // &__project {
+        //     width: 100%;
+        //     aspect-ratio: 12 / 9;
+        //     background-color: var(--txt-clr);
+        //     opacity: 0.5;
+        //     border-radius: calc(var(--radius) * 2);
+        // }
+        &__project {
+            .overlay {
+                h2,
+                p {
+                    display: none;
+                }
+                .overlay__links {
+                    img {
+                        min-width: 2rem;
+                    }
+                }
+            }
+        }
+    }
+    section[aria-labelledby="contact"] {
+        .Container {
+            --container-width: calc(100% - 2rem);
+            @include flex(c, sb, c);
+            .form {
+                form {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .about {
+        .Container {
+            h2 {
+                margin-bottom: calc(var(--gap) * 2);
+            }
+        }
+        .scroll-wrapper {
+            ul {
+                li {
+                    font-size: var(--fs-l);
+                }
+            }
+        }
+    }
+    footer {
+        .Container {
+            @include flex(c, sb, fs);
+        }
+        .Container > * {
+            max-width: 100%;
+        }
+    }
+    body {
+        text-wrap: balance;
+    }
+    p,
+    .p {
+        font-size: var(--fs-m);
+    }
+    .button {
+        width: 100% !important;
+    }
+    .button:not(:last-of-type) {
+        margin-right: 0;
+        margin-bottom: var(--gap);
+    }
+    br {
+        display: none;
+    }
+}
+@media screen and (min-width: #{toEm(769px)}) {
+}
+
+@media screen and (min-width: #{toEm(425px)}) {
+}
+
+/*For tablets */
+
+// @media screen and (max-width: #{toEm(375px)}) {
+// 	.Container {
+// 	}
+// }
+// For S phones
+// @media screen and (max-width: #{toEm(320px)}) {
+// 	.Container {
+// 	}
+// }
+// For xS phones
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .header__nav-link:hover {
+        text-decoration: underline;
+        opacity: 0.9;
+    }
+    .button:hover {
+        opacity: 0.9;
+    }
+    .avatar-group {
+        ul {
+            li:hover {
+                transform: translateY(-15%);
+            }
+        }
+    }
+    .services {
+        .Container {
+            ul {
+                li:hover {
+                    img {
+                        transform: scale(1.15);
+                    }
+                }
+            }
+        }
+    }
+    // header nav a:not(.button):hover {
+    //     text-decoration: underline;
+    // }
+    .social-links li:hover {
+        transform: rotate(10deg) scale(1.1);
+    }
+}
+
+// @supports (scroll-snap-points-y: repeat(100vh)) {
+// 	html,
+// 	html:focus-within {
+// 		scroll-snap-points-y: repeat(100vh);
+// 	}
+// }
+@supports not (overflow-x: clip) {
+    html,
+    body,
+    .hero__scroll-wrapper {
+        overflow-x: hidden;
+    }
+}
+@supports not (width: fit-content) {
+    .button {
+        width: max-content;
+        height: max-content;
+    }
+    .about {
+        .scroll-wrapper {
+            ul {
+                width: max-content;
+            }
+        }
+    }
+}
+@supports not (font-size: clamp(2.5rem, 7vw, 7rem)) {
+    :root {
+        --fs-3xl: 7vw;
+    }
+    @media screen and (min-width: #{toEm(1600px)}) {
+        :root {
+            --fs-3xl: 7rem;
+        }
+    }
+    @media screen and (max-width: #{toEm(425px)}) {
+        :root {
+            --fs-3xl: 2.5rem;
+        }
+    }
+}
+@supports not (height: 100svh) {
+}
+@supports not (aspect-ratio: 1 / 1) {
+}
+
+// put all the animation here if you will use them in css and delete the reduce one
+@media (prefers-reduced-motion: no-preference) {
+}
+/* For people who have motion sickness. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-delay: 0s !important;
+        transition-duration: 0s !important;
+    }
+}

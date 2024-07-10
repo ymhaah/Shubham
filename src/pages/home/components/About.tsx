@@ -57,5 +57,3 @@ function About(): JSX.Element {
 }
 
 export default About;
-
-// TODO: add social links

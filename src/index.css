@@ -603,32 +603,8 @@ svg,
 }
 .company {
   width: 100%;
-  margin-block: calc(var(--margin) * 2);
+  min-height: 100vh;
 }
-.company .drag-wrapper {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(20vw, 1fr));
-  transform: translateX(20%);
-  gap: calc(var(--gap) * 2);
-  scrollbar-width: none;
-}
-.company .drag-wrapper .team-member {
-  aspect-ratio: 12/9;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: var(--gap);
-  border-radius: calc(var(--radius) * 2);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  position: relative;
-}
-.company .drag-wrapper .team-member img {
-  width: 100%;
-  height: 100%;
-}
-
 .services {
   width: 100%;
 }
@@ -739,13 +715,13 @@ section[aria-labelledby=contact] .Container .form form .input-wrapper {
 section[aria-labelledby=contact] .Container .form form p {
   margin-inline: 0.5em;
 }
-section[aria-labelledby=contact] .Container .form form p[date-form-error=waiting] {
+section[aria-labelledby=contact] .Container .form form p.waiting {
   color: var(--txt-clr);
 }
-section[aria-labelledby=contact] .Container .form form p[date-form-error=error] {
+section[aria-labelledby=contact] .Container .form form p.error {
   color: var(--error-clr);
 }
-section[aria-labelledby=contact] .Container .form form p[date-form-error=success] {
+section[aria-labelledby=contact] .Container .form form p.success {
   color: var(--success-clr);
 }
 section[aria-labelledby=contact] .Container .form form button {

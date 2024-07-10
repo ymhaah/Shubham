@@ -1,0 +1,95 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+
+// @include flex(r, c, c);
+// @include flexForPhon(cr,2);
+// @include grid(2, 2, fr, 1rem)
+
+.hero {
+    width: 100%;
+    padding-top: var(--Header-hight);
+    &__container {
+        margin-block: var(--margin);
+        text-align: center;
+    }
+    &__title {
+        opacity: 0.9;
+    }
+    &__subtitle {
+        margin-bottom: calc(var(--gap) * 1.5);
+    }
+    .button {
+        border-radius: 30px;
+    }
+    &__highlight img {
+        width: 1.5em;
+        position: relative;
+        top: -0.3em;
+    }
+    &__scroll-wrapper {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(50vw, 1fr));
+        margin-top: calc(var(--margin) * 2);
+        transform: translateX(20%);
+        gap: calc(var(--gap) * 2);
+        scrollbar-width: none;
+    }
+    &__project {
+        width: 100%;
+        aspect-ratio: 12 / 9;
+        border-radius: calc(var(--radius) * 2);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        position: relative;
+        .project__image {
+            width: 100%;
+            height: 100%;
+        }
+        .overlay {
+            @include flex(c, c, c);
+            gap: calc(var(--gap) / 2);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            isolation: isolate;
+            z-index: 2;
+            overflow: hidden;
+            padding: 5%;
+            opacity: 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            text-transform: capitalize;
+            h2 {
+                font-size: var(--fs-l);
+                color: var(--bg-clr);
+            }
+            p {
+                font-size: var(--fs-s);
+                color: var(--bg-clr);
+            }
+            .overlay__links {
+                @include flex(r, c, c);
+                margin-top: var(--gap);
+                gap: var(--gap);
+                img {
+                    min-width: 1.5rem;
+                    padding: calc(var(--gap) / 2);
+                    border: 1.5px solid var(--bg-clr);
+                    border-radius: 50%;
+                }
+            }
+            transition: opacity calc(var(--time-fast) * 2) var(--animation);
+        }
+    }
+    &__project:hover .overlay,
+    &__project .overlay:has(a:focus-visible),
+    &__project:focus-visible .overlay {
+        opacity: 1;
+    }
+    &__project:hover .project__image {
+        filter: blur(1px);
+    }
+}

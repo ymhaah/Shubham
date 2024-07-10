@@ -1,0 +1,52 @@
+@use "../global/index" as *;
+@use "../util/index" as *;
+
+// @include flex(r, c, c);
+// @include flexForPhon(cr,2);
+// @include grid(2, 2, fr, 1rem)
+
+footer {
+    width: 100%;
+    .Container {
+        @include flex(r, sb, fs);
+        gap: calc(var(--gap) * 2);
+        padding: 2.5rem 0;
+        .footer__title {
+            text-transform: capitalize;
+            margin-bottom: calc(var(--gap) / 2);
+            font-size: var(--fs-m);
+            font-weight: var(--fw-m);
+        }
+        nav[aria-label="secondary Navigation"] {
+            a {
+                @include flex(r, fs, c);
+                gap: calc(var(--gap) / 2);
+                text-transform: capitalize;
+                color: var(--txt-clr);
+
+                img {
+                    height: 0.5em;
+                }
+            }
+        }
+        nav[aria-label="social media links"] {
+            ul {
+                @include flex(r, fs, c);
+                gap: calc(var(--gap) / 2);
+                li {
+                    transition: transform var(--time-fast) var(--animation);
+                    a {
+                        img {
+                            width: 2rem;
+                            opacity: 0.8;
+                            box-shadow: var(--shadow);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .Container > * {
+        max-width: 25%;
+    }
+}

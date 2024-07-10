@@ -1,6 +1,82 @@
+import { useRef, FormEvent, useState } from "react";
 import Button from "@/Button";
 
+const URL = "";
+
 function Contact() {
+    const nameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const messageRef = useRef<HTMLTextAreaElement>(null);
+
+    const [submitMessage, setSubmitMessage] = useState<{
+        message: string;
+        error: boolean | undefined;
+    }>({
+        message: "Please enter your information to submit.",
+        error: undefined,
+    });
+
+    function resetInput() {
+        window.setTimeout(() => {
+            if (nameRef.current) nameRef.current.value = "";
+            if (emailRef.current) emailRef.current.value = "";
+            if (messageRef.current) messageRef.current.value = "";
+            setSubmitMessage({
+                message: "Please enter your information to submit.",
+                error: undefined,
+            });
+        }, 2000);
+    }
+
+    async function handleSubmit(event: FormEvent) {
+        event.preventDefault();
+
+        const name = nameRef.current?.value.trim();
+        const email = emailRef.current?.value.trim();
+        const message = messageRef.current?.value.trim();
+
+        if (!name && !email && !message) return;
+
+        const formData = {
+            Name: name,
+            Email: email,
+            Message: message,
+        };
+
+        // ? Convert form data to URL-encoded string
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const formDataString = new URLSearchParams(formData as any).toString();
+
+        console.log(formDataString);
+
+        try {
+            const response = await fetch(URL, {
+                method: "POST",
+                body: formDataString,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+            });
+
+            if (response.ok) {
+                resetInput();
+                setSubmitMessage({
+                    message: "Form submitted successfully.",
+                    error: false,
+                });
+            } else {
+                throw new Error("Failed to submit the form.");
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            setSubmitMessage({
+                message:
+                    "There was an error submitting the form. Please try again later.",
+                error: true,
+            });
+        }
+    }
+
     return (
         <section aria-labelledby="contact">
             <div className="Container">
@@ -10,7 +86,11 @@ function Contact() {
                     </h2>
                 </div>
                 <div className="form">
-                    <form id="main-htmlForm" method="POST">
+                    <form
+                        id="main-htmlForm"
+                        method="POST"
+                        onSubmit={handleSubmit}
+                    >
                         <div className="input-wrapper">
                             <label
                                 htmlFor="input-name"
@@ -20,14 +100,15 @@ function Contact() {
                             </label>
                             <input
                                 type="text"
-                                name="Client Name"
+                                name="Name"
                                 id="input-name"
                                 className="form-input focus"
                                 placeholder="Name"
                                 minLength={2}
                                 maxLength={50}
                                 autoComplete="given-name"
-                                required={true}
+                                required
+                                ref={nameRef}
                             />
                         </div>
                         <div className="input-wrapper">
@@ -44,33 +125,40 @@ function Contact() {
                                 className="form-input focus"
                                 placeholder="Email"
                                 autoComplete="email"
-                                required={true}
+                                required
                                 minLength={6}
                                 maxLength={80}
+                                ref={emailRef}
                             />
                         </div>
                         <div className="input-wrapper">
                             <label
-                                htmlFor="Massage"
+                                htmlFor="Message"
                                 className="form-label required"
                             >
-                                Massage
+                                Message
                             </label>
                             <textarea
-                                name="Massage"
-                                id="Massage"
+                                name="Message"
+                                id="Message"
                                 className="form-input focus"
-                                placeholder="Massage"
-                                required={true}
+                                placeholder="Message"
+                                required
                                 maxLength={5000}
+                                ref={messageRef}
                             />
                         </div>
                         <p
                             id="submit-message"
-                            className="small"
-                            date-form-error="waiting"
+                            className={`small ${
+                                submitMessage.error === true
+                                    ? "error"
+                                    : submitMessage.error === false
+                                    ? "success"
+                                    : "waiting"
+                            }`}
                         >
-                            Please enter your information to submit.
+                            {submitMessage.message}
                         </p>
                         <Button
                             type="submit"

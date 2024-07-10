@@ -1,0 +1,42 @@
+:root {
+    // * alpha
+    --clr-alpha-white: 0 0% 100%;
+    --clr-alpha-black: 0 0% 0%;
+
+    // * main
+
+    --txt-clr: hsla(220, 12%, 5%, 0.95);
+    --txt-clr-500: hsl(225, 40%, 2%);
+    --txt-clr-300: hsla(220, 12%, 5%, 0.5);
+    --bg-clr: hsl(225, 33%, 98%);
+    --primary-clr-600: hsl(220, 72%, 52%);
+    --primary-clr-500: hsl(221, 83%, 62%);
+    --contrast-clr-600: hsl(25, 72%, 60%);
+    --contrast-clr-500: hsl(26, 83%, 70%);
+    --contrast-clr-100: hsl(26, 20%, 85%);
+    --mono-clr: hsla(0, 0%, 50%);
+    --error-clr: hsl(0, 68%, 47%);
+    --success-clr: hsl(120, 68%, 47%);
+
+    --linear-gradient-primary: linear-gradient(
+        var(--primary-clr-600),
+        var(--primary-clr-500)
+    );
+    --radial-gradient-primary: radial-gradient(
+        var(--primary-clr-600),
+        var(--primary-clr-500)
+    );
+    --linear-gradient-contrast: linear-gradient(
+        var(--contrast-clr-600),
+        var(--contrast-clr-500)
+    );
+    --radial-gradient-contrast: radial-gradient(
+        var(--contrast-clr-600),
+        var(--contrast-clr-500)
+    );
+    --linear-gradient-dark: linear-gradient(var(--txt-clr), var(--txt-clr-500));
+    --radial-gradient-glow: radial-gradient(
+        hsla(var(--clr-alpha-white) / 1) hsla(var(--clr-alpha-white) / 0)
+    );
+    color-scheme: light;
+}
