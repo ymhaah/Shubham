@@ -12,39 +12,23 @@ function Service(): JSX.Element {
     const services = [
         {
             icon: link,
-            title: "lorem ipsum",
-            content:
-                "lorem ipsum dolor sit amet consectetur adipisicing elit. lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            title: "Custom Websites",
+            content: "Unique designs that reflect your brand",
         },
         {
             icon: globe,
-            title: "lorem ipsum",
-            content:
-                "lorem ipsum dolor sit amet consectetur adipisicing elit. lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            title: "Responsive Design",
+            content: "Seamless experience across all devices.",
         },
         {
             icon: target,
-            title: "lorem ipsum",
-            content:
-                "lorem ipsum dolor sit amet consectetur adipisicing elit. lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            title: "Support & Maintenance",
+            content: "Ongoing care to keep your site at its best.",
         },
         {
             icon: globe,
-            title: "lorem ipsum",
-            content:
-                "lorem ipsum dolor sit amet consectetur adipisicing elit. lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        },
-        {
-            icon: link,
-            title: "lorem ipsum",
-            content:
-                "lorem ipsum dolor sit amet consectetur adipisicing elit. lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        },
-        {
-            icon: target,
-            title: "lorem ipsum",
-            content:
-                "lorem ipsum dolor sit amet consectetur adipisicing elit. lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            title: "SEO Optimization",
+            content: "Boost your online visibility and reach",
         },
     ];
 

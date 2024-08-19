@@ -144,18 +144,17 @@ function Hero(): JSX.Element {
         <main className="hero" ref={hero} id="hero">
             <div className="Container hero__container">
                 <h1 className="hero__title">
-                    Lorem
+                    Crafting Websites
                     <AvatarGroup avatars={highlights} />
-                    ipsum dolor <br />
-                    sorem, ipsum
+                    That Make Your Vision <br />
                     <span className="hero__highlight">
                         <img src={heroImage} alt="" role="presentation" />
                     </span>
-                    dolor <br />
+                    Shine <br />
                 </h1>
                 <p className="hero__subtitle">
-                    Lorem ipsum dolor sit amet Lorem ipsum dolor <br /> sit amet
-                    dolor ipsum
+                    I create custom websites tailored to showcase your brand{" "}
+                    <br /> and connect you with your audience.
                 </p>
                 <Button
                     as="a"

@@ -28,11 +28,11 @@ function About(): JSX.Element {
         <section className="about" aria-labelledby="about">
             <div className="Container">
                 <p>About Me</p>
-                <h2 id="about">Lorem ipsum dolor sit amet consectetur</h2>
+                <h2 id="about">I’m Shubham, a front-end developer</h2>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Voluptates
-                    <br /> laborum aliquid fuga odit ut iure doloremque eos rem.
+                    with a passion for building <br /> personalized websites
+                    that help you stand out. Let’s work together to bring your
+                    ideas to life."
                 </p>
                 <SocialLinks />
             </div>
