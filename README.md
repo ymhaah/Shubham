@@ -5,6 +5,11 @@
 
 Single-page microsite designed to be a Portfolio for a fellow dev "Shubham" for me Free Service ( Sample One-Page Website ), the site showcases Shubham's project and skills while sharing his links and services in an appealing way full of animation, and also gives an easy way to contact with him, all of this in a highly interactive and clean code for him to build on it.  
 
+### ⭐ What Clients Say
+
+![review-by-shubham-rakhecha](https://github.com/user-attachments/assets/6810ae4a-adcb-432b-acb8-00cd3dc9279c)
+
+
 ### Screenshot
 
 ![hero](https://github.com/user-attachments/assets/ec2f0141-646b-4020-9471-a17f68323ed4)
