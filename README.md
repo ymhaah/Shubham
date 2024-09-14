@@ -1,4 +1,4 @@
-# Sample One-Page "Free Service" Shubham Portfolio 
+# Sample One-Page "Free Service" Shubham Portfolio. 
 > Start at: May 15, 2024
 
 ### Project Description
